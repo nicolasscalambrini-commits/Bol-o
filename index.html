@@ -9,62 +9,46 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --green: #009c3b;
-    --gold: #FFDF00;
-    --blue: #002776;
-    --sco-blue: #003DA5;
-    --bg: #f4f6f9;
-    --surface: #ffffff;
-    --border: #e2e6ef;
-    --text: #1a1f36;
-    --muted: #6b7399;
-    --radius: 12px;
-    --radius-sm: 8px;
+    --green: #009c3b; --gold: #FFDF00; --blue: #002776; --sco-blue: #003DA5;
+    --bg: #f4f6f9; --surface: #ffffff; --border: #e2e6ef;
+    --text: #1a1f36; --muted: #6b7399; --radius: 12px; --radius-sm: 8px;
   }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 0 4rem; }
 
-  /* HEADER */
   .hero { background: linear-gradient(135deg, var(--blue) 0%, #001a55 100%); padding: 1.5rem 1rem 3rem; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.025) 40px, rgba(255,255,255,0.025) 41px); }
   .sankhya-label { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); position: relative; z-index: 1; margin-bottom: 10px; }
   .hero-title { font-size: 22px; font-weight: 700; color: #fff; position: relative; z-index: 1; margin-bottom: 1.25rem; }
   .hero-matchup { display: flex; align-items: center; justify-content: center; gap: 1.25rem; position: relative; z-index: 1; }
   .team-block { text-align: center; }
-  .team-flag-img { width: 52px; height: 36px; object-fit: cover; border-radius: 4px; display: block; margin: 0 auto 6px; border: 1px solid rgba(255,255,255,0.2); }
-  .team-name-hero { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: .08em; text-transform: uppercase; }
-  .vs-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: .1em; }
+  .team-name-hero { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
+  .vs-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); }
 
-  /* TABS */
   .tabs-wrap { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .tabs { display: flex; max-width: 640px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
-  .tab-btn { flex: 1; min-width: 90px; padding: 14px 8px; border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; white-space: nowrap; font-family: inherit; }
+  .tab-btn { flex: 1; min-width: 80px; padding: 14px 8px; border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; white-space: nowrap; font-family: inherit; }
   .tab-btn.active { color: var(--blue); border-bottom-color: var(--green); }
-  .tab-btn:hover:not(.active) { color: var(--text); }
 
-  /* LAYOUT */
   .container { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem; }
   .section { display: none; }
   .section.active { display: block; }
 
-  /* CARDS */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 12px; }
   .card-title { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 1rem; }
 
-  /* FORM */
   .form-group { margin-bottom: 1rem; }
   .form-group:last-child { margin-bottom: 0; }
   label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-  input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit; color: var(--text); background: var(--bg); transition: border-color .15s, box-shadow .15s; -webkit-appearance: none; appearance: none; }
-  input[type="text"]:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,39,118,.1); }
+  input[type="text"], input[type="password"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit; color: var(--text); background: var(--bg); transition: border-color .15s, box-shadow .15s; -webkit-appearance: none; }
+  input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,39,118,.1); }
 
-  /* SCORE ROW */
   .score-row { display: flex; align-items: center; gap: 8px; justify-content: center; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
   .score-team { text-align: center; flex: 1; }
   .score-flag { width: 44px; height: 30px; object-fit: cover; border-radius: 3px; border: 1px solid rgba(0,0,0,.1); margin: 0 auto 4px; display: block; }
   .score-team-name { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
   .score-num-wrap { display: flex; align-items: center; gap: 6px; justify-content: center; }
-  .score-btn { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); font-size: 18px; cursor: pointer; color: var(--text); display: flex; align-items: center; justify-content: center; transition: background .1s; font-family: inherit; }
+  .score-btn { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); font-size: 18px; cursor: pointer; color: var(--text); display: flex; align-items: center; justify-content: center; font-family: inherit; transition: background .1s; }
   .score-btn:hover { background: var(--border); }
   .score-num { font-size: 28px; font-weight: 700; min-width: 36px; text-align: center; }
   .score-mid { display: flex; flex-direction: column; align-items: center; gap: 6px; }
@@ -74,35 +58,31 @@
   .outcome-sco { background: #e8eeff; color: var(--sco-blue); }
   .outcome-draw { background: #fff8e0; color: #7a5900; }
 
-  /* SCORERS SECTION */
   .scorers-section { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-  .scorers-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .scorers-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
   .scorer-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .scorer-row:last-child { margin-bottom: 0; }
-  .scorer-flag { width: 28px; height: 20px; object-fit: cover; border-radius: 2px; border: 1px solid rgba(0,0,0,.08); flex-shrink: 0; }
+  .scorer-flag { width: 28px; height: 20px; border-radius: 2px; border: 1px solid rgba(0,0,0,.08); flex-shrink: 0; }
   .select-wrap { position: relative; flex: 1; }
   .select-wrap::after { content: '▾'; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; font-size: 13px; }
-  .select-wrap select { width: 100%; padding: 9px 30px 9px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; color: var(--text); background: var(--bg); -webkit-appearance: none; appearance: none; cursor: pointer; }
+  .select-wrap select { width: 100%; padding: 9px 30px 9px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; color: var(--text); background: var(--bg); -webkit-appearance: none; cursor: pointer; }
   .select-wrap select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,39,118,.1); }
-  .no-scorer-note { font-size: 12px; color: var(--muted); text-align: center; padding: 8px; background: var(--bg); border-radius: var(--radius-sm); margin-top: 6px; }
+  .no-scorer-note { font-size: 12px; color: var(--muted); text-align: center; padding: 8px; background: var(--bg); border-radius: var(--radius-sm); }
 
-  /* BUTTON */
-  .btn { width: 100%; padding: 13px; background: var(--blue); color: white; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 6px; transition: background .15s, transform .1s; font-family: inherit; }
+  .btn { width: 100%; padding: 13px; background: var(--blue); color: white; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 6px; transition: background .15s; font-family: inherit; }
   .btn:hover { background: #001a55; }
-  .btn:active { transform: scale(.99); }
+  .btn:disabled { background: #aab0c8; cursor: not-allowed; }
   .btn-danger { background: transparent; color: #c0392b; border: 1px solid #f5c6c6; font-size: 13px; padding: 8px; margin-top: 8px; }
   .btn-danger:hover { background: #fff0f0; }
 
-  /* MY BET PREVIEW */
   .my-bet-preview { background: linear-gradient(135deg, #e8f5ee, #eef3ff); border: 1px solid #c3dfc9; border-radius: var(--radius); padding: 1.25rem; margin-top: 12px; display: none; }
   .my-bet-preview.visible { display: block; }
-  .my-bet-score { font-size: 22px; font-weight: 700; text-align: center; color: var(--text); margin-bottom: 4px; }
+  .my-bet-score { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 4px; }
   .my-bet-sub { text-align: center; font-size: 13px; color: var(--muted); }
   .scorer-tag-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
   .scorer-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 3px 10px; border-radius: 999px; background: #e8eeff; color: var(--sco-blue); font-weight: 500; }
   .scorer-tag.bra { background: #e8f5ee; color: #007a2f; }
 
-  /* RESULT BANNER */
   .result-banner { background: linear-gradient(135deg, var(--green), #007a2f); color: white; border-radius: var(--radius); padding: 1.25rem; text-align: center; margin-bottom: 12px; display: none; }
   .result-banner.visible { display: block; }
   .result-score-big { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
@@ -110,7 +90,10 @@
   .result-scorer-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
   .result-scorer-pill { font-size: 12px; background: rgba(255,255,255,.18); border-radius: 999px; padding: 3px 12px; }
 
-  /* RANKING */
+  /* loading spinner */
+  .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,.4); border-top-color: white; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .rank-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
   .rank-item.top1 { border-color: #f0c040; box-shadow: 0 0 0 1px #f0c040; }
   .rank-item.top2 { border-color: #b0b8c8; }
@@ -128,52 +111,43 @@
   .rank-pts-num { font-size: 24px; font-weight: 700; color: var(--blue); }
   .rank-pts-lbl { font-size: 11px; color: var(--muted); }
 
-  /* ADMIN */
   .admin-bet-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .admin-bet-row:last-child { border-bottom: none; }
   .admin-bet-info { flex: 1; min-width: 0; }
   .admin-bet-name { font-weight: 500; font-size: 14px; }
   .admin-bet-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .btn-icon { background: transparent; border: none; cursor: pointer; color: var(--muted); font-size: 18px; padding: 4px; border-radius: var(--radius-sm); transition: color .15s, background .15s; }
-  .btn-icon:hover { color: #c0392b; background: #fff0f0; }
+  .btn-icon { background: transparent; border: none; cursor: pointer; color: var(--muted); font-size: 18px; padding: 4px; border-radius: var(--radius-sm); transition: color .15s; }
+  .btn-icon:hover { color: #c0392b; }
 
-  /* RULES */
   .rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem; }
   .rule-block { text-align: center; padding: 1.25rem .5rem; border-radius: var(--radius); }
-  .rule-block.win { background: #e8f5ee; }
-  .rule-block.draw { background: #fff8e0; }
-  .rule-block.loss { background: #f4f6f9; }
+  .rule-block.win { background: #e8f5ee; } .rule-block.draw { background: #fff8e0; } .rule-block.loss { background: #f4f6f9; }
   .rule-pts { font-size: 28px; font-weight: 700; }
-  .rule-pts.win { color: #007a2f; }
-  .rule-pts.draw { color: #7a5900; }
-  .rule-pts.loss { color: var(--muted); }
+  .rule-pts.win { color: #007a2f; } .rule-pts.draw { color: #7a5900; } .rule-pts.loss { color: var(--muted); }
   .rule-lbl { font-size: 12px; font-weight: 500; margin-top: 4px; }
-  .rule-lbl.win { color: #007a2f; }
-  .rule-lbl.draw { color: #7a5900; }
-  .rule-lbl.loss { color: var(--muted); }
+  .rule-lbl.win { color: #007a2f; } .rule-lbl.draw { color: #7a5900; } .rule-lbl.loss { color: var(--muted); }
   .info-row { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
   .info-row:last-child { border-bottom: none; }
-  .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .info-icon { font-size: 18px; flex-shrink: 0; }
 
-  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-
-  /* SVG FLAGS */
-  .flag-svg { display: inline-block; border-radius: 3px; border: 1px solid rgba(0,0,0,.1); overflow: hidden; vertical-align: middle; }
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 14px; }
+  .loading-state { text-align: center; padding: 2rem; color: var(--muted); font-size: 14px; }
+  .sync-bar { background: #e8f5ee; border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: #007a2f; margin-bottom: 12px; display: none; text-align: center; }
+  .sync-bar.visible { display: block; }
+  .error-bar { background: #fff0f0; border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: #c0392b; margin-bottom: 12px; display: none; text-align: center; }
+  .error-bar.visible { display: block; }
 </style>
 </head>
 <body>
 
-<!-- SVG flags inline -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
-    <!-- Brazil flag simplified -->
     <symbol id="flag-bra" viewBox="0 0 60 40">
       <rect width="60" height="40" fill="#009c3b"/>
       <polygon points="30,4 56,20 30,36 4,20" fill="#FFDF00"/>
       <circle cx="30" cy="20" r="9" fill="#002776"/>
       <path d="M21.5,17.5 Q30,14 38.5,17.5" stroke="white" stroke-width="1.5" fill="none"/>
     </symbol>
-    <!-- Scotland flag (St Andrew's Cross) -->
     <symbol id="flag-sco" viewBox="0 0 60 40">
       <rect width="60" height="40" fill="#003DA5"/>
       <line x1="0" y1="0" x2="60" y2="40" stroke="white" stroke-width="7"/>
@@ -187,13 +161,13 @@
   <div class="hero-title">Brasil × Escócia</div>
   <div class="hero-matchup">
     <div class="team-block">
-      <svg class="flag-svg" width="56" height="38" style="border-radius:4px"><use href="#flag-bra"/></svg>
-      <div class="team-name-hero" style="margin-top:6px;">Brasil</div>
+      <svg width="56" height="38" style="border-radius:4px;border:1px solid rgba(255,255,255,.2)"><use href="#flag-bra"/></svg>
+      <div class="team-name-hero">Brasil</div>
     </div>
     <div class="vs-badge">VS</div>
     <div class="team-block">
-      <svg class="flag-svg" width="56" height="38" style="border-radius:4px"><use href="#flag-sco"/></svg>
-      <div class="team-name-hero" style="margin-top:6px;">Escócia</div>
+      <svg width="56" height="38" style="border-radius:4px;border:1px solid rgba(255,255,255,.2)"><use href="#flag-sco"/></svg>
+      <div class="team-name-hero">Escócia</div>
     </div>
   </div>
 </div>
@@ -210,6 +184,8 @@
 <!-- PALPITAR -->
 <div id="tab-palpitar" class="section active">
   <div class="container">
+    <div id="sync-ok" class="sync-bar"></div>
+    <div id="sync-err" class="error-bar"></div>
     <div class="card">
       <div class="card-title">Seu palpite</div>
       <div class="form-group">
@@ -243,15 +219,12 @@
           </div>
         </div>
       </div>
-
-      <!-- SCORERS -->
-      <div class="scorers-section" id="scorers-section">
+      <div class="scorers-section">
         <div class="scorers-title">⚽ Quem marca os gols? <span style="font-size:12px;color:var(--muted);font-weight:400;">(critério de desempate)</span></div>
         <div id="scorer-rows-wrap"></div>
-        <div id="no-scorer-note" class="no-scorer-note" style="display:none;">Nenhum gol esperado — sem artilheiro para indicar.</div>
+        <div id="no-scorer-note" class="no-scorer-note" style="display:none;">Nenhum gol esperado — sem artilheiro.</div>
       </div>
-
-      <button class="btn" onclick="submitBet()">Registrar palpite ✓</button>
+      <button class="btn" id="btn-submit" onclick="submitBet()">Registrar palpite ✓</button>
     </div>
     <div id="my-bet-preview" class="my-bet-preview"></div>
   </div>
@@ -261,61 +234,57 @@
 <div id="tab-ranking" class="section">
   <div class="container">
     <div id="result-banner" class="result-banner"></div>
-    <div id="ranking-list"></div>
+    <div id="ranking-list"><div class="loading-state">Carregando palpites...</div></div>
   </div>
 </div>
 
 <!-- ADMIN -->
 <div id="tab-admin" class="section">
   <div class="container">
-
-    <!-- SENHA GATE -->
-    <div id="admin-gate" class="card" style="text-align:center; padding: 2rem 1.25rem;">
-      <div style="font-size:2rem; margin-bottom:12px;">🔒</div>
+    <div id="admin-gate" class="card" style="text-align:center;padding:2rem 1.25rem;">
+      <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
       <div class="card-title" style="margin-bottom:6px;">Área restrita</div>
-      <div style="font-size:13px; color:var(--muted); margin-bottom:1.25rem;">Digite a senha para acessar o painel de administração.</div>
-      <input type="password" id="admin-pwd-input" placeholder="Senha" style="text-align:center; margin-bottom:10px;" onkeydown="if(event.key==='Enter') checkAdminPwd()"/>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:1.25rem;">Digite a senha para acessar.</div>
+      <input type="password" id="admin-pwd-input" placeholder="Senha" style="text-align:center;margin-bottom:10px;" onkeydown="if(event.key==='Enter')checkAdminPwd()"/>
       <button class="btn" onclick="checkAdminPwd()">Entrar</button>
-      <div id="admin-pwd-error" style="color:#c0392b; font-size:13px; margin-top:8px; display:none;">Senha incorreta.</div>
+      <div id="admin-pwd-error" style="color:#c0392b;font-size:13px;margin-top:8px;display:none;">Senha incorreta.</div>
     </div>
-
-    <!-- CONTEÚDO ADMIN (oculto até autenticar) -->
     <div id="admin-content" style="display:none;">
-    <div class="card">
-      <div class="card-title">Publicar resultado oficial</div>
-      <div class="form-group">
-        <label>Placar final</label>
-        <div class="score-row">
-          <div class="score-team">
-            <svg class="score-flag" width="44" height="30"><use href="#flag-bra"/></svg>
-            <div class="score-team-name">Brasil</div>
-            <div class="score-num-wrap">
-              <button class="score-btn" onclick="changeResScore('bra',-1)">−</button>
-              <div class="score-num" id="res-disp-bra">0</div>
-              <button class="score-btn" onclick="changeResScore('bra',+1)">+</button>
+      <div class="card">
+        <div class="card-title">Publicar resultado oficial</div>
+        <div class="form-group">
+          <label>Placar final</label>
+          <div class="score-row">
+            <div class="score-team">
+              <svg class="score-flag" width="44" height="30"><use href="#flag-bra"/></svg>
+              <div class="score-team-name">Brasil</div>
+              <div class="score-num-wrap">
+                <button class="score-btn" onclick="changeResScore('bra',-1)">−</button>
+                <div class="score-num" id="res-disp-bra">0</div>
+                <button class="score-btn" onclick="changeResScore('bra',+1)">+</button>
+              </div>
             </div>
-          </div>
-          <span class="score-sep">×</span>
-          <div class="score-team">
-            <svg class="score-flag" width="44" height="30"><use href="#flag-sco"/></svg>
-            <div class="score-team-name">Escócia</div>
-            <div class="score-num-wrap">
-              <button class="score-btn" onclick="changeResScore('sco',-1)">−</button>
-              <div class="score-num" id="res-disp-sco">0</div>
-              <button class="score-btn" onclick="changeResScore('sco',+1)">+</button>
+            <span class="score-sep">×</span>
+            <div class="score-team">
+              <svg class="score-flag" width="44" height="30"><use href="#flag-sco"/></svg>
+              <div class="score-team-name">Escócia</div>
+              <div class="score-num-wrap">
+                <button class="score-btn" onclick="changeResScore('sco',-1)">−</button>
+                <div class="score-num" id="res-disp-sco">0</div>
+                <button class="score-btn" onclick="changeResScore('sco',+1)">+</button>
+              </div>
             </div>
           </div>
         </div>
+        <div id="res-scorer-rows" style="margin-top:1rem;"></div>
+        <button class="btn" id="btn-publish" onclick="publishResult()">Publicar resultado ✓</button>
+        <button id="btn-clear-result" class="btn btn-danger" onclick="clearResult()" style="display:none;">Remover resultado publicado</button>
       </div>
-      <div id="res-scorer-rows" style="margin-top:1rem;"></div>
-      <button class="btn" onclick="publishResult()">Publicar resultado ✓</button>
-      <button id="btn-clear-result" class="btn btn-danger" onclick="clearResult()" style="display:none;">Remover resultado publicado</button>
+      <div class="card">
+        <div class="card-title">Palpites registrados</div>
+        <div id="admin-bets-list"><div class="loading-state">Carregando...</div></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-title">Palpites registrados</div>
-      <div id="admin-bets-list"></div>
-    </div>
-    </div> <!-- /admin-content -->
   </div>
 </div>
 
@@ -332,32 +301,61 @@
     </div>
     <div class="card">
       <div class="card-title">Como funciona</div>
-      <div class="info-row"><span class="info-icon">✏️</span><span>Registre o placar e indique <strong>quem marca os gols</strong> de cada time (critério de desempate).</span></div>
-      <div class="info-row"><span class="info-icon">🏆</span><span>A pontuação depende do <strong>resultado</strong>: vitória do Brasil (+10), empate (+5) ou vitória da Escócia (+10). O placar exato não importa.</span></div>
-      <div class="info-row"><span class="info-icon">⚽</span><span><strong>Desempate 1:</strong> Quem acertar o(s) artilheiro(s) correto(s) sobe na classificação.</span></div>
-      <div class="info-row"><span class="info-icon">🕐</span><span><strong>Desempate 2:</strong> Quem se cadastrou primeiro vence em caso de igualdade.</span></div>
+      <div class="info-row"><span class="info-icon">✏️</span><span>Registre o placar e indique quem marca os gols de cada time (critério de desempate).</span></div>
+      <div class="info-row"><span class="info-icon">🏆</span><span>Pontuação pelo <strong>resultado</strong>: vitória do Brasil (+10), empate (+5) ou vitória da Escócia (+10).</span></div>
+      <div class="info-row"><span class="info-icon">⚽</span><span><strong>Desempate 1:</strong> Quem acertar o(s) artilheiro(s) correto(s).</span></div>
+      <div class="info-row"><span class="info-icon">🕐</span><span><strong>Desempate 2:</strong> Quem se cadastrou primeiro.</span></div>
     </div>
   </div>
 </div>
 
 <script>
 (function(){
-const KEY_BETS = 'bolao_snk_v2';
-const KEY_RES  = 'bolao_snk_res_v2';
-
-let bets   = JSON.parse(localStorage.getItem(KEY_BETS)||'[]');
-let result = JSON.parse(localStorage.getItem(KEY_RES)||'null');
-
-const scores    = {bra:2, sco:0};
-const resScores = {bra:0, sco:0};
+const API = 'https://script.google.com/macros/s/AKfycbxRNxukNC95-cvWgq2MCXg2fJnU-C08SGoVT-oieOYJYJ59o-jOg-TF5lhH73Z4skK9/exec';
+const ADMIN_PWD = 'sankhya2025';
 
 const PLAYERS_BRA = ['Vinicius Jr.','Rodrygo','Raphinha','Gabriel Martinelli','Richarlison','Endrick','Gabriel Barbosa (Gabigol)','Neymar Jr.','Bruno Guimarães','Lucas Paquetá','Gerson','Marquinhos','Gabriel Magalhães','Éder Militão','Danilo','Outro jogador do Brasil'];
 const PLAYERS_SCO = ['Scott McTominay','Lawrence Shankland','Che Adams','Lyndon Dykes','Ryan Christie','John McGinn','Stuart Armstrong','Billy Gilmour','Callum McGregor','Kenny McLean','Ryan Jack','Andy Robertson','Aaron Hickey','Liam Cooper','Jack Hendry','Ryan Porteous','Grant Hanley','Craig Gordon','Angus Gunn','Liam Kelly','Ross McCrorie','Scott McKenna','Anthony Ralston','Greg Taylor','Outro jogador da Escócia'];
 
+const scores    = {bra:2, sco:0};
+const resScores = {bra:0, sco:0};
+let adminUnlocked = false;
+let cachedBets = [];
+let cachedResult = null;
+
+// ── API ──
+async function apiFetch(params) {
+  const url = API + '?' + new URLSearchParams(params);
+  const r = await fetch(url);
+  return r.json();
+}
+
+async function apiPost(body) {
+  const r = await fetch(API, {
+    method: 'POST',
+    body: JSON.stringify(body)
+  });
+  return r.json();
+}
+
+// ── HELPERS ──
 function outcome(b,s){ return b>s?'bra':s>b?'sco':'draw'; }
 
-function save(){ localStorage.setItem(KEY_BETS, JSON.stringify(bets)); }
-function saveResult(){ localStorage.setItem(KEY_RES, JSON.stringify(result)); }
+function showToast(msg, color){
+  let t=document.getElementById('toast');
+  if(!t){ t=document.createElement('div'); t.id='toast'; t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#1a1f36;color:white;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:500;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;'; document.body.appendChild(t); }
+  t.style.background = color||'#1a1f36';
+  t.textContent=msg; t.style.opacity='1';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>{ t.style.opacity='0'; },3000);
+}
+
+function setLoading(btnId, loading, text){
+  const btn = document.getElementById(btnId);
+  if(!btn) return;
+  btn.disabled = loading;
+  btn.innerHTML = loading ? `<span class="spinner"></span>${text}` : text;
+}
 
 // ── SCORE PICKER ──
 function updateOutcomeBadge(){
@@ -373,17 +371,16 @@ window.changeScore=function(team,d){
   document.getElementById('disp-'+team).textContent=scores[team];
   updateOutcomeBadge();
 };
-
 window.changeResScore=function(team,d){
   resScores[team]=Math.max(0,resScores[team]+d);
   document.getElementById('res-disp-'+team).textContent=resScores[team];
   renderRescorerRows();
 };
 
-// ── SCORER ROWS (palpite) ──
-function makeSelect(players, id, labelFlag, placeholder){
+// ── SCORER ROWS ──
+function makeSelect(players, id, flagSvgId, placeholder){
   return `<div class="scorer-row">
-    <svg class="scorer-flag" width="28" height="20">${labelFlag}</svg>
+    <svg class="scorer-flag" width="28" height="20"><use href="#${flagSvgId}"/></svg>
     <div class="select-wrap">
       <select id="${id}">
         <option value="">${placeholder}</option>
@@ -393,194 +390,191 @@ function makeSelect(players, id, labelFlag, placeholder){
   </div>`;
 }
 
-const flagBraInline = `<use href="#flag-bra"/>`;
-const flagScoInline = `<use href="#flag-sco"/>`;
-
 function renderScorerRows(){
-  const wrap = document.getElementById('scorer-rows-wrap');
-  const note = document.getElementById('no-scorer-note');
-  const bra  = scores.bra;
-  const sco  = scores.sco;
-
-  if(bra===0 && sco===0){
-    wrap.innerHTML='';
-    note.style.display='block';
-    return;
-  }
+  const wrap=document.getElementById('scorer-rows-wrap');
+  const note=document.getElementById('no-scorer-note');
+  if(scores.bra===0&&scores.sco===0){ wrap.innerHTML=''; note.style.display='block'; return; }
   note.style.display='none';
-
   let html='';
-  if(bra>0){
-    for(let i=0;i<bra;i++){
-      html+=makeSelect(PLAYERS_BRA,`scr-bra-${i}`,flagBraInline,`Artilheiro Brasil — gol ${i+1}`);
-    }
-  }
-  if(sco>0){
-    for(let i=0;i<sco;i++){
-      html+=makeSelect(PLAYERS_SCO,`scr-sco-${i}`,flagScoInline,`Artilheiro Escócia — gol ${i+1}`);
-    }
-  }
+  for(let i=0;i<scores.bra;i++) html+=makeSelect(PLAYERS_BRA,`scr-bra-${i}`,'flag-bra',`Artilheiro Brasil — gol ${i+1}`);
+  for(let i=0;i<scores.sco;i++) html+=makeSelect(PLAYERS_SCO,`scr-sco-${i}`,'flag-sco',`Artilheiro Escócia — gol ${i+1}`);
   wrap.innerHTML=html;
 }
 
-function getScorerValues(){
-  const bra=[],sco=[];
-  for(let i=0;i<scores.bra;i++){
-    const el=document.getElementById(`scr-bra-${i}`);
-    bra.push(el?el.value:'');
-  }
-  for(let i=0;i<scores.sco;i++){
-    const el=document.getElementById(`scr-sco-${i}`);
-    sco.push(el?el.value:'');
-  }
-  return {bra,sco};
-}
-
-// ── SCORER ROWS (admin result) ──
 function renderRescorerRows(){
   const wrap=document.getElementById('res-scorer-rows');
-  const bra=resScores.bra, sco=resScores.sco;
-  if(bra===0&&sco===0){ wrap.innerHTML='<div class="no-scorer-note">Placar 0×0 — sem artilheiro.</div>'; return; }
-  let html='<div class="scorers-title" style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:10px;">⚽ Artilheiros oficiais</div>';
-  for(let i=0;i<bra;i++) html+=makeSelect(PLAYERS_BRA,`res-bra-${i}`,flagBraInline,`Brasil — gol ${i+1}`);
-  for(let i=0;i<sco;i++) html+=makeSelect(PLAYERS_SCO,`res-sco-${i}`,flagScoInline,`Escócia — gol ${i+1}`);
+  if(!wrap) return;
+  if(resScores.bra===0&&resScores.sco===0){ wrap.innerHTML='<div class="no-scorer-note">Placar 0×0 — sem artilheiro.</div>'; return; }
+  let html='<div class="scorers-title" style="font-size:13px;font-weight:500;margin-bottom:10px;">⚽ Artilheiros oficiais</div>';
+  for(let i=0;i<resScores.bra;i++) html+=makeSelect(PLAYERS_BRA,`res-bra-${i}`,'flag-bra',`Brasil — gol ${i+1}`);
+  for(let i=0;i<resScores.sco;i++) html+=makeSelect(PLAYERS_SCO,`res-sco-${i}`,'flag-sco',`Escócia — gol ${i+1}`);
   wrap.innerHTML=html;
 }
 
-function getRescorerValues(){
-  const bra=[],sco=[];
-  for(let i=0;i<resScores.bra;i++){const el=document.getElementById(`res-bra-${i}`);bra.push(el?el.value:'');}
-  for(let i=0;i<resScores.sco;i++){const el=document.getElementById(`res-sco-${i}`);sco.push(el?el.value:'');}
-  return {bra,sco};
-}
-
-// ── SCORING ──
-function calcPts(bet){
-  if(!result) return null;
-  const bo=outcome(bet.bra,bet.sco);
-  const ro=outcome(result.bra,result.sco);
-  if(bo!==ro) return 0;
-  return ro==='draw'?5:10;
-}
-
-function countScorerMatches(bet){
-  if(!result||!result.scorers) return 0;
-  let matches=0;
-  const rb=[...(result.scorers.bra||[])];
-  const rs=[...(result.scorers.sco||[])];
-  const bs=bet.scorers||{};
-  (bs.bra||[]).forEach(p=>{ if(p){const i=rb.indexOf(p);if(i>=0){matches++;rb.splice(i,1);}} });
-  (bs.sco||[]).forEach(p=>{ if(p){const i=rs.indexOf(p);if(i>=0){matches++;rs.splice(i,1);}} });
-  return matches;
-}
-
-function getRanked(){
-  return bets.map((b,i)=>({...b,_i:i,pts:calcPts(b)??0,scorerHits:countScorerMatches(b)}))
-    .sort((a,b)=>{
-      if(b.pts!==a.pts) return b.pts-a.pts;
-      if(b.scorerHits!==a.scorerHits) return b.scorerHits-a.scorerHits;
-      return a._i-b._i;
-    });
+function getScorerValues(prefix, bra, sco){
+  const braArr=[],scoArr=[];
+  for(let i=0;i<bra;i++){ const el=document.getElementById(`${prefix}-bra-${i}`); braArr.push(el?el.value:''); }
+  for(let i=0;i<sco;i++){ const el=document.getElementById(`${prefix}-sco-${i}`); scoArr.push(el?el.value:''); }
+  return {bra:braArr,sco:scoArr};
 }
 
 // ── SUBMIT BET ──
-window.submitBet=function(){
+window.submitBet=async function(){
   const name=document.getElementById('inp-name').value.trim();
   if(!name){ alert('Informe seu nome.'); return; }
+  const sv=getScorerValues('scr',scores.bra,scores.sco);
+  if(scores.bra>0&&sv.bra.some(v=>!v)){ alert('Selecione o artilheiro para cada gol do Brasil.'); return; }
+  if(scores.sco>0&&sv.sco.some(v=>!v)){ alert('Selecione o artilheiro para cada gol da Escócia.'); return; }
 
-  const sv=getScorerValues();
-  if(scores.bra>0 && sv.bra.some(v=>!v)){ alert('Selecione o artilheiro para cada gol do Brasil.'); return; }
-  if(scores.sco>0 && sv.sco.some(v=>!v)){ alert('Selecione o artilheiro para cada gol da Escócia.'); return; }
-
-  const existing=bets.findIndex(b=>b.name.toLowerCase()===name.toLowerCase());
-  if(existing>=0){ if(!confirm(`Já existe palpite de "${name}". Atualizar?`)) return; bets.splice(existing,1); }
-
-  const bet={name, bra:scores.bra, sco:scores.sco, scorers:{bra:sv.bra, sco:sv.sco}, ts:Date.now()};
-  bets.push(bet);
-  save();
-
-  const o=outcome(bet.bra,bet.sco);
-  const ol=o==='bra'?'Brasil vence':o==='sco'?'Escócia vence':'Empate';
-  let scorerTagsHtml='';
-  sv.bra.forEach(p=>{ scorerTagsHtml+=`<span class="scorer-tag bra">🇧🇷 ${p}</span>`; });
-  sv.sco.forEach(p=>{ scorerTagsHtml+=`<span class="scorer-tag">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`; });
-
-  const preview=document.getElementById('my-bet-preview');
-  preview.classList.add('visible');
-  preview.innerHTML=`
-    <div class="my-bet-score">Brasil ${bet.bra} × ${bet.sco} Escócia</div>
-    <div class="my-bet-sub">${ol} — palpite de ${name}</div>
-    ${scorerTagsHtml?`<div class="scorer-tag-list">${scorerTagsHtml}</div>`:''}`;
-  showToast('Palpite registrado! 🎉');
+  setLoading('btn-submit', true, 'Salvando...');
+  try {
+    await apiPost({ action:'saveBet', nome:name, gols_bra:scores.bra, gols_sco:scores.sco, artilheiros_bra:sv.bra, artilheiros_sco:sv.sco });
+    const o=outcome(scores.bra,scores.sco);
+    const ol=o==='bra'?'Brasil vence':o==='sco'?'Escócia vence':'Empate';
+    let tagsHtml='';
+    sv.bra.forEach(p=>{ tagsHtml+=`<span class="scorer-tag bra">🇧🇷 ${p}</span>`; });
+    sv.sco.forEach(p=>{ tagsHtml+=`<span class="scorer-tag">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`; });
+    const preview=document.getElementById('my-bet-preview');
+    preview.classList.add('visible');
+    preview.innerHTML=`<div class="my-bet-score">Brasil ${scores.bra} × ${scores.sco} Escócia</div>
+      <div class="my-bet-sub">${ol} — palpite de ${name}</div>
+      ${tagsHtml?`<div class="scorer-tag-list">${tagsHtml}</div>`:''}`;
+    showToast('Palpite registrado! 🎉','#007a2f');
+  } catch(e) {
+    showToast('Erro ao salvar. Tente novamente.','#c0392b');
+  }
+  setLoading('btn-submit', false, 'Registrar palpite ✓');
 };
+
+// ── ADMIN AUTH ──
+window.showAdminTab=function(btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-admin').classList.add('active');
+  btn.classList.add('active');
+  if(adminUnlocked){ showAdminContent(); }
+  else { document.getElementById('admin-gate').style.display='block'; document.getElementById('admin-content').style.display='none'; setTimeout(()=>document.getElementById('admin-pwd-input').focus(),100); }
+};
+
+window.checkAdminPwd=function(){
+  const val=document.getElementById('admin-pwd-input').value;
+  if(val===ADMIN_PWD){ adminUnlocked=true; document.getElementById('admin-pwd-error').style.display='none'; showAdminContent(); }
+  else { document.getElementById('admin-pwd-error').style.display='block'; document.getElementById('admin-pwd-input').value=''; }
+};
+
+async function showAdminContent(){
+  document.getElementById('admin-gate').style.display='none';
+  document.getElementById('admin-content').style.display='block';
+  await loadAndRenderAdminBets();
+  renderRescorerRows();
+  if(cachedResult) document.getElementById('btn-clear-result').style.display='block';
+}
 
 // ── PUBLISH RESULT ──
-window.publishResult=function(){
-  const sv=getRescorerValues();
-  if(resScores.bra>0 && sv.bra.some(v=>!v)){ alert('Selecione o artilheiro para cada gol do Brasil.'); return; }
-  if(resScores.sco>0 && sv.sco.some(v=>!v)){ alert('Selecione o artilheiro para cada gol da Escócia.'); return; }
-  result={bra:resScores.bra, sco:resScores.sco, scorers:{bra:sv.bra, sco:sv.sco}};
-  saveResult();
-  document.getElementById('btn-clear-result').style.display='block';
-  showToast('Resultado publicado! Veja o Ranking.');
-  renderAdminBets();
+window.publishResult=async function(){
+  const sv=getScorerValues('res',resScores.bra,resScores.sco);
+  if(resScores.bra>0&&sv.bra.some(v=>!v)){ alert('Selecione o artilheiro para cada gol do Brasil.'); return; }
+  if(resScores.sco>0&&sv.sco.some(v=>!v)){ alert('Selecione o artilheiro para cada gol da Escócia.'); return; }
+  setLoading('btn-publish', true, 'Publicando...');
+  try {
+    await apiPost({ action:'saveResult', gols_bra:resScores.bra, gols_sco:resScores.sco, artilheiros_bra:sv.bra, artilheiros_sco:sv.sco });
+    cachedResult = { gols_bra:resScores.bra, gols_sco:resScores.sco, artilheiros_bra:sv.bra, artilheiros_sco:sv.sco };
+    document.getElementById('btn-clear-result').style.display='block';
+    showToast('Resultado publicado! ✓','#007a2f');
+  } catch(e) { showToast('Erro ao publicar.','#c0392b'); }
+  setLoading('btn-publish', false, 'Publicar resultado ✓');
 };
 
-window.clearResult=function(){
+window.clearResult=async function(){
   if(!confirm('Remover resultado oficial?')) return;
-  result=null;
-  localStorage.removeItem(KEY_RES);
+  await apiPost({ action:'saveResult', gols_bra:0, gols_sco:0, artilheiros_bra:[], artilheiros_sco:[], clear:true });
+  cachedResult=null;
   document.getElementById('btn-clear-result').style.display='none';
   showToast('Resultado removido.');
 };
 
-window.deleteBet=function(name){
-  if(!confirm(`Remover palpite de ${name}?`)) return;
-  bets=bets.filter(b=>b.name!==name);
-  save();
-  renderAdminBets();
+window.deleteBet=async function(nome){
+  if(!confirm(`Remover palpite de ${nome}?`)) return;
+  await apiPost({ action:'deleteBet', nome });
+  await loadAndRenderAdminBets();
   showToast('Palpite removido.');
 };
 
+// ── SCORING ──
+function calcPts(bet, res){
+  if(!res) return null;
+  const bo=outcome(bet.gols_bra,bet.gols_sco);
+  const ro=outcome(res.gols_bra,res.gols_sco);
+  if(bo!==ro) return 0;
+  return ro==='draw'?5:10;
+}
+
+function countScorerMatches(bet, res){
+  if(!res) return 0;
+  let m=0;
+  const rb=[...(res.artilheiros_bra||[])];
+  const rs=[...(res.artilheiros_sco||[])];
+  (bet.artilheiros_bra||[]).forEach(p=>{ if(p){const i=rb.indexOf(p);if(i>=0){m++;rb.splice(i,1);}} });
+  (bet.artilheiros_sco||[]).forEach(p=>{ if(p){const i=rs.indexOf(p);if(i>=0){m++;rs.splice(i,1);}} });
+  return m;
+}
+
+function getRanked(bets, res){
+  return bets.map((b,i)=>({...b,_i:i,pts:calcPts(b,res)??0,scorerHits:countScorerMatches(b,res)}))
+    .sort((a,b)=>{ if(b.pts!==a.pts) return b.pts-a.pts; if(b.scorerHits!==a.scorerHits) return b.scorerHits-a.scorerHits; return a._i-b._i; });
+}
+
 // ── RENDER RANKING ──
-function renderRanking(){
+async function loadAndRenderRanking(){
+  const list=document.getElementById('ranking-list');
+  list.innerHTML='<div class="loading-state">Carregando palpites...</div>';
+  try {
+    const [bRes, rRes] = await Promise.all([apiFetch({action:'getBets'}), apiFetch({action:'getResult'})]);
+    cachedBets = bRes.bets||[];
+    cachedResult = rRes.result||null;
+    renderRankingUI();
+  } catch(e) {
+    list.innerHTML='<div class="empty-state">Erro ao carregar. Verifique sua conexão.</div>';
+  }
+}
+
+function renderRankingUI(){
   const banner=document.getElementById('result-banner');
   const list=document.getElementById('ranking-list');
+  const res=cachedResult;
+  const bets=cachedBets;
 
-  if(result){
-    const o=outcome(result.bra,result.sco);
-    const ol=o==='bra'?'🇧🇷 Brasil venceu':o==='sco'?'Escócia venceu':'🤝 Empate';
-    const scorerPills=[...(result.scorers.bra||[]).map(p=>`<span class="result-scorer-pill">🇧🇷 ${p}</span>`), ...(result.scorers.sco||[]).map(p=>`<span class="result-scorer-pill">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`)].join('');
+  if(res){
+    const o=outcome(res.gols_bra,res.gols_sco);
+    const ol=o==='bra'?'🇧🇷 Brasil venceu':o==='sco'?'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia venceu':'🤝 Empate';
+    const pills=[...(res.artilheiros_bra||[]).map(p=>`<span class="result-scorer-pill">🇧🇷 ${p}</span>`), ...(res.artilheiros_sco||[]).map(p=>`<span class="result-scorer-pill">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`)].join('');
     banner.classList.add('visible');
     banner.innerHTML=`<div style="font-size:11px;opacity:.8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;">Resultado oficial</div>
-      <div class="result-score-big">Brasil ${result.bra} × ${result.sco} Escócia</div>
+      <div class="result-score-big">Brasil ${res.gols_bra} × ${res.gols_sco} Escócia</div>
       <div class="result-sub">${ol}</div>
-      ${scorerPills?`<div class="result-scorer-list">${scorerPills}</div>`:''}`;
+      ${pills?`<div class="result-scorer-list">${pills}</div>`:''}`;
   } else { banner.classList.remove('visible'); }
 
-  if(bets.length===0){
-    list.innerHTML='<div class="empty-state">👥<br>Nenhum palpite ainda.<br>Seja o primeiro!</div>';
-    return;
-  }
+  if(!bets||bets.length===0){ list.innerHTML='<div class="empty-state">👥<br>Nenhum palpite ainda.<br>Seja o primeiro!</div>'; return; }
 
-  const ranked=getRanked();
+  const ranked=getRanked(bets,res);
   const medals=['🥇','🥈','🥉'];
   list.innerHTML=ranked.map((b,i)=>{
-    const o=outcome(b.bra,b.sco);
+    const o=outcome(b.gols_bra,b.gols_sco);
     const ol=o==='bra'?'🇧🇷 Brasil':o==='sco'?'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia':'🤝 Empate';
     const cls=i===0?'top1':i===1?'top2':i===2?'top3':'';
-    const scorerTagsHtml=[
-      ...(b.scorers&&b.scorers.bra||[]).filter(p=>p).map(p=>`<span class="rank-tag bra">🇧🇷 ${p}</span>`),
-      ...(b.scorers&&b.scorers.sco||[]).filter(p=>p).map(p=>`<span class="rank-tag sco">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`)
+    const tags=[
+      ...(b.artilheiros_bra||[]).filter(p=>p).map(p=>`<span class="rank-tag bra">🇧🇷 ${p}</span>`),
+      ...(b.artilheiros_sco||[]).filter(p=>p).map(p=>`<span class="rank-tag sco">🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}</span>`)
     ].join('');
-    const hitsChip=result&&b.scorerHits>0?`<span class="rank-tag ok">⚽ ${b.scorerHits} acerto${b.scorerHits>1?'s':''}</span>`:'';
-    const pts=calcPts(b);
+    const hitsChip=res&&b.scorerHits>0?`<span class="rank-tag ok">⚽ ${b.scorerHits} acerto${b.scorerHits>1?'s':''}</span>`:'';
+    const pts=calcPts(b,res);
     return `<div class="rank-item ${cls}">
       <div class="rank-pos">${i<3?medals[i]:(i+1)+'º'}</div>
       <div class="rank-info">
-        <div class="rank-name">${b.name}</div>
-        <div class="rank-detail">${b.bra} × ${b.sco} — ${ol}</div>
-        <div class="rank-tags">${scorerTagsHtml}${hitsChip}</div>
+        <div class="rank-name">${b.nome}</div>
+        <div class="rank-detail">${b.gols_bra} × ${b.gols_sco} — ${ol}</div>
+        <div class="rank-tags">${tags}${hitsChip}</div>
       </div>
       <div class="rank-pts">
         <div class="rank-pts-num">${pts!==null?pts:'—'}</div>
@@ -590,76 +584,47 @@ function renderRanking(){
   }).join('');
 }
 
-// ── RENDER ADMIN ──
-function renderAdminBets(){
+// ── RENDER ADMIN BETS ──
+async function loadAndRenderAdminBets(){
   const area=document.getElementById('admin-bets-list');
-  document.getElementById('btn-clear-result').style.display=result?'block':'none';
-  if(bets.length===0){ area.innerHTML='<div class="empty-state" style="padding:1.5rem 0;">📋<br>Nenhum palpite ainda.</div>'; return; }
-  area.innerHTML=bets.map(b=>{
-    const o=outcome(b.bra,b.sco);
+  area.innerHTML='<div class="loading-state">Carregando...</div>';
+  try {
+    const r=await apiFetch({action:'getBets'});
+    cachedBets=r.bets||[];
+    renderAdminBetsUI();
+  } catch(e){ area.innerHTML='<div class="empty-state">Erro ao carregar.</div>'; }
+}
+
+function renderAdminBetsUI(){
+  const area=document.getElementById('admin-bets-list');
+  if(!cachedBets||cachedBets.length===0){ area.innerHTML='<div class="empty-state" style="padding:1.5rem 0;">📋<br>Nenhum palpite ainda.</div>'; return; }
+  area.innerHTML=cachedBets.map(b=>{
+    const o=outcome(b.gols_bra,b.gols_sco);
     const ol=o==='bra'?'Brasil':o==='sco'?'Escócia':'Empate';
-    const scorerList=[...(b.scorers.bra||[]).map(p=>`🇧🇷 ${p}`), ...(b.scorers.sco||[]).map(p=>`🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}`)].join(', ');
+    const scorers=[...(b.artilheiros_bra||[]).map(p=>`🇧🇷 ${p}`), ...(b.artilheiros_sco||[]).map(p=>`🏴󠁧󠁢󠁳󠁣󠁴󠁿 ${p}`)].join(', ');
     return `<div class="admin-bet-row">
       <div class="admin-bet-info">
-        <div class="admin-bet-name">${b.name}</div>
-        <div class="admin-bet-sub">${b.bra} × ${b.sco} — ${ol}</div>
-        ${scorerList?`<div class="admin-bet-sub" style="margin-top:2px;">⚽ ${scorerList}</div>`:''}
+        <div class="admin-bet-name">${b.nome}</div>
+        <div class="admin-bet-sub">${b.gols_bra} × ${b.gols_sco} — ${ol}</div>
+        ${scorers?`<div class="admin-bet-sub">⚽ ${scorers}</div>`:''}
       </div>
-      <button class="btn-icon" onclick="deleteBet('${b.name.replace(/'/g,"\\'")}')">🗑</button>
+      <button class="btn-icon" onclick="deleteBet('${b.nome.replace(/'/g,"\\'")}')">🗑</button>
     </div>`;
   }).join('');
 }
 
-function showToast(msg){
-  let t=document.getElementById('toast');
-  if(!t){ t=document.createElement('div'); t.id='toast'; t.style.cssText='position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#1a1f36;color:white;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:500;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;'; document.body.appendChild(t); }
-  t.textContent=msg; t.style.opacity='1';
-  clearTimeout(t._timer);
-  t._timer=setTimeout(()=>{ t.style.opacity='0'; },2500);
-}
-
-const ADMIN_PWD = 'sankhya2025';
-let adminUnlocked = false;
-
-window.showAdminTab = function(btn) {
+// ── TABS ──
+window.showTab=function(name,btn){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-admin').classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
-  if(adminUnlocked){
-    document.getElementById('admin-gate').style.display='none';
-    document.getElementById('admin-content').style.display='block';
-    renderAdminBets();
-    renderRescorerRows();
-  } else {
-    document.getElementById('admin-gate').style.display='block';
-    document.getElementById('admin-content').style.display='none';
-    setTimeout(()=>document.getElementById('admin-pwd-input').focus(),100);
-  }
-};
-
-window.checkAdminPwd = function() {
-  const val = document.getElementById('admin-pwd-input').value;
-  const err = document.getElementById('admin-pwd-error');
-  if(val === ADMIN_PWD) {
-    adminUnlocked = true;
-    document.getElementById('admin-gate').style.display='none';
-    document.getElementById('admin-content').style.display='block';
-    err.style.display='none';
-    renderAdminBets();
-    renderRescorerRows();
-  } else {
-    err.style.display='block';
-    document.getElementById('admin-pwd-input').value='';
-    document.getElementById('admin-pwd-input').focus();
-  }
+  if(name==='ranking') loadAndRenderRanking();
 };
 
 // init
 updateOutcomeBadge();
-renderAdminBets();
 renderRescorerRows();
-if(result) document.getElementById('btn-clear-result').style.display='block';
 })();
 </script>
 </body>
