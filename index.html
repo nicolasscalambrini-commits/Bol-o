@@ -202,7 +202,7 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('palpitar',this)">✏️ Palpitar</button>
     <button class="tab-btn" onclick="showTab('ranking',this)">🏆 Ranking</button>
-    <button class="tab-btn" onclick="showTab('admin',this)">🔧 Admin</button>
+    <button class="tab-btn" onclick="showAdminTab(this)">🔧 Admin</button>
     <button class="tab-btn" onclick="showTab('regras',this)">📋 Regras</button>
   </div>
 </div>
@@ -268,6 +268,19 @@
 <!-- ADMIN -->
 <div id="tab-admin" class="section">
   <div class="container">
+
+    <!-- SENHA GATE -->
+    <div id="admin-gate" class="card" style="text-align:center; padding: 2rem 1.25rem;">
+      <div style="font-size:2rem; margin-bottom:12px;">🔒</div>
+      <div class="card-title" style="margin-bottom:6px;">Área restrita</div>
+      <div style="font-size:13px; color:var(--muted); margin-bottom:1.25rem;">Digite a senha para acessar o painel de administração.</div>
+      <input type="password" id="admin-pwd-input" placeholder="Senha" style="text-align:center; margin-bottom:10px;" onkeydown="if(event.key==='Enter') checkAdminPwd()"/>
+      <button class="btn" onclick="checkAdminPwd()">Entrar</button>
+      <div id="admin-pwd-error" style="color:#c0392b; font-size:13px; margin-top:8px; display:none;">Senha incorreta.</div>
+    </div>
+
+    <!-- CONTEÚDO ADMIN (oculto até autenticar) -->
+    <div id="admin-content" style="display:none;">
     <div class="card">
       <div class="card-title">Publicar resultado oficial</div>
       <div class="form-group">
@@ -302,6 +315,7 @@
       <div class="card-title">Palpites registrados</div>
       <div id="admin-bets-list"></div>
     </div>
+    </div> <!-- /admin-content -->
   </div>
 </div>
 
@@ -604,13 +618,41 @@ function showToast(msg){
   t._timer=setTimeout(()=>{ t.style.opacity='0'; },2500);
 }
 
-window.showTab=function(name,btn){
+const ADMIN_PWD = 'sankhya2025';
+let adminUnlocked = false;
+
+window.showAdminTab = function(btn) {
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
+  document.getElementById('tab-admin').classList.add('active');
   btn.classList.add('active');
-  if(name==='ranking') renderRanking();
-  if(name==='admin'){ renderAdminBets(); renderRescorerRows(); }
+  if(adminUnlocked){
+    document.getElementById('admin-gate').style.display='none';
+    document.getElementById('admin-content').style.display='block';
+    renderAdminBets();
+    renderRescorerRows();
+  } else {
+    document.getElementById('admin-gate').style.display='block';
+    document.getElementById('admin-content').style.display='none';
+    setTimeout(()=>document.getElementById('admin-pwd-input').focus(),100);
+  }
+};
+
+window.checkAdminPwd = function() {
+  const val = document.getElementById('admin-pwd-input').value;
+  const err = document.getElementById('admin-pwd-error');
+  if(val === ADMIN_PWD) {
+    adminUnlocked = true;
+    document.getElementById('admin-gate').style.display='none';
+    document.getElementById('admin-content').style.display='block';
+    err.style.display='none';
+    renderAdminBets();
+    renderRescorerRows();
+  } else {
+    err.style.display='block';
+    document.getElementById('admin-pwd-input').value='';
+    document.getElementById('admin-pwd-input').focus();
+  }
 };
 
 // init
